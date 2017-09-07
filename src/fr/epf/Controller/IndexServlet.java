@@ -7,34 +7,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.epf.Model.Employe;
+
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/index")
+@WebServlet("/admin")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
     public IndexServlet() {
-        super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+		Employe employe = (Employe) request.getSession().getAttribute("employe");
+		
+		if((Employe) request.getSession().getAttribute("employe") == null){
+			response.sendRedirect("");
+		}
+		
+		if(employe.getAdminPriviledge()) {
+			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+		} else {
+			response.sendRedirect("employe");
+		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

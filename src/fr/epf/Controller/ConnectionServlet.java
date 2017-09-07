@@ -5,21 +5,18 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import fr.epf.DAO.EmployeDAO;
 import fr.epf.Model.Employe;
 
 /**
  * Servlet implementation class ConnectionServlet
  */
-@WebServlet("/connection")
+@WebServlet("/")
 public class ConnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +34,7 @@ public class ConnectionServlet extends HttpServlet {
 		Employe employe = parseEmploye(request);
 		
 		List<Object> employeList = employeDao.findSome(employe.getLogin());
-		Iterator employeItr = employeList.iterator();
+		Iterator<Object> employeItr = employeList.iterator();
 		
 		while(employeItr.hasNext()) {
 			Object[] employeObj = (Object[]) employeItr.next();
@@ -45,6 +42,7 @@ public class ConnectionServlet extends HttpServlet {
 			if(employe.getPass().equals(employeObj[1])) {
 				employe.setId((Long) employeObj[2]);
 				employe.setPass("********");
+				employe.setAdminPriviledge((Boolean) employeObj[3]);
 				
 				request.getSession().setAttribute("employe", employe);
 				

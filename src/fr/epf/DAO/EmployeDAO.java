@@ -22,10 +22,6 @@ public class EmployeDAO {
 		return em.find(Employe.class, id);
 	}
 
-	public List<Employe> findAll() {
-		return em.createQuery("SELECT * FROM Employe").getResultList();
-	}
-
 	public List<Object> findSome(String login) {
 		return em.createQuery("SELECT name, pass, id, adminPriviledge FROM Employe WHERE login = '" + login + "'").getResultList();
 	}
