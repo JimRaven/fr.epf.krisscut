@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,10 +13,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="style/style.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Mood of the month</a>
+                <a class="navbar-brand" href="admin">Mood of the month</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -77,9 +78,23 @@
                                             <label for="email">Email</label>
                                             <input type="email" class="input-lg form-control" id="email" placeholder="Email Address">
                                         </div>
+
                                         <div class="form-group">
                                             <label for="date">Birthdate</label>
                                             <input type="text" class="input-lg form-control" id="date" placeholder="DD/MM/YYYY">
+                                        </div>
+
+                                            <label for="error"><c:out value = "${error}"/></label>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="login">Login</label>
+                                            <input type="text" class="input-lg form-control" name="login" id="login" placeholder="Login" required="true">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="text" class="input-lg form-control" name="password" id="password" placeholder="Password" required="true">
                                         </div>
 
                                         <div class="text-right">

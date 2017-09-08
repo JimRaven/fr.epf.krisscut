@@ -4,9 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employe Page</title>
+	<title>Employee Page</title>
+
+	<!-- Bootstrap CSS -->
+    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/javaEECourse/style/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
 </head>
 <body>
 	<h1>Welcome</h1>
+	<a href="motm">plop</a>
 </body>
 </html>
