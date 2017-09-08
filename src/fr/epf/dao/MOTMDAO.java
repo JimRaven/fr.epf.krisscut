@@ -12,7 +12,7 @@ import fr.epf.models.MOTM;
 public class MOTMDAO {
 	private static final String COUNT_MOTM_BY_LEVEL = "SELECT COUNT(*) FROM MOTM WHERE level=";
 	private static final String COUNT_ALL_MOTM = "SELECT COUNT(*) FROM MOTM";
-	private static final String FIND_ALL_COMMENT_MOST_RECENT = "FROM MOTM WHERE comment <>'' ORDER BY id DESC";
+	private static final String FIND_ALL_COMMENT_MOST_RECENT = "FROM MOTM WHERE comment <>'' AND visible = 1 ORDER BY id DESC";
 	private static final String FIND_ALL_MOTM = "SELECT * FROM motm";
 	@PersistenceContext
 	private EntityManager em;
@@ -29,7 +29,7 @@ public class MOTMDAO {
 		return em.createQuery(FIND_ALL_MOTM).getResultList();
 	}
 
-	public List<MOTM> findSome() {
+	public List<MOTM> findRecentPublicComment() {
 		return em.createQuery(FIND_ALL_COMMENT_MOST_RECENT).getResultList();
 	}
 	

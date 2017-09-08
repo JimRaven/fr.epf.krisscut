@@ -22,7 +22,7 @@ public class DashboardServlet extends HttpServlet {
 	private MOTMDAO motmDAO;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<MOTM> motmList = motmDAO.findSome();
+		List<MOTM> motmList = motmDAO.findRecentPublicComment();
 		MOTM motm1 = motmList.get(0);
 		String motm1Img = "img/"+motm1.getLevel()+".png";
 		request.getSession().setAttribute("motm1Img", motm1Img);
@@ -54,17 +54,24 @@ public class DashboardServlet extends HttpServlet {
 		List<Long> level5Count = motmDAO.levelCount(5);
 		int level5Counter = level5Count.get(0).intValue();
 		
+		String average = String.format("%.2f", (float)(level1Counter + 2*level2Counter + 3*level3Counter + 4*level4Counter + 5*level5Counter)/(float)totalCounter);
+		
+		String avgImg = "img/"+ Math.round(Float.valueOf(average))+".png";
+	
+		request.getSession().setAttribute("average", average);
+		request.getSession().setAttribute("avgImg", avgImg);
+		
 		request.getSession().setAttribute("level1Counter", level1Counter);
 		request.getSession().setAttribute("level2Counter", level2Counter);
 		request.getSession().setAttribute("level3Counter", level3Counter);
 		request.getSession().setAttribute("level4Counter", level4Counter);
 		request.getSession().setAttribute("level5Counter", level5Counter);
 
-		request.getSession().setAttribute("level1Total", ((float)level1Counter/(float)totalCounter)*100+"%");
-		request.getSession().setAttribute("level2Total", ((float)level2Counter/(float)totalCounter)*100+"%");
-		request.getSession().setAttribute("level3Total", ((float)level3Counter/(float)totalCounter)*100+"%");
-		request.getSession().setAttribute("level4Total", ((float)level4Counter/(float)totalCounter)*100+"%");
-		request.getSession().setAttribute("level5Total", ((float)level5Counter/(float)totalCounter)*100+"%");
+		request.getSession().setAttribute("level1Total", String.format("%.2f",((float)level1Counter/(float)totalCounter)*100)+"%");
+		request.getSession().setAttribute("level2Total", String.format("%.2f",((float)level2Counter/(float)totalCounter)*100)+"%");
+		request.getSession().setAttribute("level3Total", String.format("%.2f",((float)level3Counter/(float)totalCounter)*100)+"%");
+		request.getSession().setAttribute("level4Total", String.format("%.2f",((float)level4Counter/(float)totalCounter)*100)+"%");
+		request.getSession().setAttribute("level5Total", String.format("%.2f",((float)level5Counter/(float)totalCounter)*100)+"%");
 		
 		request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
 	}

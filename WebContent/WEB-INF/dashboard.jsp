@@ -112,11 +112,11 @@
         <div class="global">
             <div class="global-mood">
               <div class="img-container">
-                <img class="mood" src="img/4.png" alt=""/>
+                <img class="mood" src="<%= request.getSession().getAttribute("avgImg") %>" alt=""/>
               </div>
               <div class="notation">
                   <p class="title">GLOBAL MOOD</p>
-                  <span class="note">4.2</span>
+                  <span class="note">${average}</span>
                   <span class="note-on">/5</span>
               </div>
             </div>
