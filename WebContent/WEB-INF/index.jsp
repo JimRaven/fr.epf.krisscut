@@ -12,10 +12,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link href="/fr.epf.krisscut/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="style/style.css" rel="stylesheet">
+    <link href="/fr.epf.krisscut/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
