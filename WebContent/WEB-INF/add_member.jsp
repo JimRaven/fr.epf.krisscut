@@ -13,10 +13,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/javaEECourse/style/style.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -71,6 +71,19 @@
                                 <div class="col-xs-12">
                                     <form action="" method="post" class="">
                                         <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="input-lg form-control" id="name" placeholder="Nom">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="input-lg form-control" id="email" placeholder="Email Address">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="date">Birthdate</label>
+                                            <input type="text" class="input-lg form-control" id="date" placeholder="DD/MM/YYYY">
+                                        </div>
+
                                             <label for="error"><c:out value = "${error}"/></label>
                                         </div>
                                         
@@ -113,10 +126,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="/JavaEECourse/js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/JavaEECourse/js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 </html>

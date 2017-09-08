@@ -12,10 +12,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/javaEECourse/style/style.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -269,8 +269,8 @@
                         </div>
                         <div class="panel-body" id="stats">
 
-                            <div class="note">
-                                4.2<small>/5</small>
+                            <div class="note">                               
+                  			${average}<small>/5</small>
                                 <p>Avg Mood</p>
                             </div>
 
@@ -280,11 +280,11 @@
                                         <img src="img/1.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: 10</span>
+                                        <span class="desc">Vote count: ${level1Counter}</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                                                <span class="">10%</span>
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${level1Total}">
+																<span class="">${level1Total}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -294,11 +294,11 @@
                                         <img src="img/2.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: 5</span>
+                                        <span class="desc">Vote count: ${level2Counter}</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="5"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:5%">
-                                                <span class="">5%</span>
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${level2Total}">
+																<span class="">${level2Total}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -308,11 +308,11 @@
                                         <img src="img/3.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: 15</span>
+                                        <span class="desc">Vote count: ${level3Counter}</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="15"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:15%">
-                                                <span class="">15%</span>
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${level3Total}">
+																<span class="">${level3Total}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -322,11 +322,11 @@
                                         <img src="img/4.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: 45</span>
+                                        <span class="desc">Vote count: ${level4Counter}</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-midsuccess" role="progressbar" aria-valuenow="45"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:45%">
-                                                <span class="">45%</span>
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${level4Total}">
+																<span class="">${level4Total}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -336,11 +336,11 @@
                                         <img src="img/5.png" alt="super"/>
                                     </div>
                                     <div class="progress-bar-container">
-                                        <span class="desc">Vote count: 25</span>
+                                        <span class="desc">Vote count: ${level5Counter}</span>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="25"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                                                <span class="">25%</span>
+                                                 aria-valuemin="0" aria-valuemax="100" style="width:${level5Total}">
+																<span class="">${level5Total}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -416,13 +416,13 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="/JavaEECourse/js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 
     <!-- togggle.js -->
     <script src="../js/toggle.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/JavaEECourse/js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
 </body>
 </html>

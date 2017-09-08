@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
-    <head>
+	<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +12,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/javaEECourse/style/style.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -38,11 +38,11 @@
                     <img src="img/1.png" alt="super"/>
                 </div>
                 <div class="progress-bar-container">
-                    <span class="desc">Vote count: 10</span>
+                    <span class="desc">Vote count: ${level1Counter}</span>
                     <div class="progress">
                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10"
-                             aria-valuemin="0" aria-valuemax="100" style="width:10%">
-                            <span class="">10%</span>
+                             aria-valuemin="0" aria-valuemax="100" style="width:${level1Total}">
+                            <span class="">${level1Total}</span>
                         </div>
                     </div>
                 </div>
@@ -52,11 +52,11 @@
                     <img src="img/2.png" alt="super"/>
                 </div>
                 <div class="progress-bar-container">
-                    <span class="desc">Vote count: 5</span>
+                    <span class="desc">Vote count: ${level2Counter}</span>
                     <div class="progress">
                         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="5"
-                             aria-valuemin="0" aria-valuemax="100" style="width:5%">
-                            <span class="">5%</span>
+                             aria-valuemin="0" aria-valuemax="100" style="width:${level2Total}">
+                            <span class="">${level2Total}</span>
                         </div>
                     </div>
                 </div>
@@ -66,11 +66,11 @@
                     <img src="img/3.png" alt="super"/>
                 </div>
                 <div class="progress-bar-container">
-                    <span class="desc">Vote count: 15</span>
+                    <span class="desc">Vote count: ${level3Counter}</span>
                     <div class="progress">
                         <div class="progress-bar progress-bar-neutral" role="progressbar" aria-valuenow="15"
-                             aria-valuemin="0" aria-valuemax="100" style="width:15%">
-                            <span class="">15%</span>
+                             aria-valuemin="0" aria-valuemax="100" style="width:${level3Total}">
+                            <span class="">${level3Total}</span>
                         </div>
                     </div>
                 </div>
@@ -80,11 +80,11 @@
                     <img src="img/4.png" alt="super"/>
                 </div>
                 <div class="progress-bar-container">
-                    <span class="desc">Vote count: 45</span>
+                    <span class="desc">Vote count: ${level4Counter}</span>
                     <div class="progress">
                         <div class="progress-bar progress-bar-midsuccess" role="progressbar" aria-valuenow="45"
-                             aria-valuemin="0" aria-valuemax="100" style="width:45%">
-                            <span class="">45%</span>
+                             aria-valuemin="0" aria-valuemax="100" style="width:${level4Total}">
+                            <span class="">${level4Total}</span>
                         </div>
                     </div>
                 </div>
@@ -94,11 +94,11 @@
                     <img src="img/5.png" alt="super"/>
                 </div>
                 <div class="progress-bar-container">
-                    <span class="desc">Vote count: 25</span>
+                    <span class="desc">Vote count: ${level5Counter}</span>
                     <div class="progress">
                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="25"
-                             aria-valuemin="0" aria-valuemax="100" style="width:25%">
-                            <span class="">25%</span>
+                             aria-valuemin="0" aria-valuemax="100" style="width:${level5Total}">
+                            <span class="">${level5Total}</span>
                         </div>
                     </div>
                 </div>
@@ -112,11 +112,11 @@
         <div class="global">
             <div class="global-mood">
               <div class="img-container">
-                <img class="mood" src="img/4.png" alt=""/>
+                <img class="mood" src="<%= request.getSession().getAttribute("avgImg") %>" alt=""/>
               </div>
               <div class="notation">
                   <p class="title">GLOBAL MOOD</p>
-                  <span class="note">4.2</span>
+                  <span class="note">${average}</span>
                   <span class="note-on">/5</span>
               </div>
             </div>
@@ -126,38 +126,34 @@
             <h2 class="title">Comments</h2>
             <div class="comment-container">
                 <div class="note">
-                    <img class="mood" src="img/3.png" alt=""/>
+                    <img class="mood" src="<%= request.getSession().getAttribute("motm1Img") %>"  alt=""/>
                 </div>
                 <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                    molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
+                    ${motm1}
                 </div>
             </div>
             <div class="comment-container">
                 <div class="note">
-                    <img class="mood" src="img/4.png" alt=""/>
+                    <img class="mood" src="<%= request.getSession().getAttribute("motm2Img") %>" alt=""/>
                 </div>
                 <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                    molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
+                    ${motm2}
                 </div>
             </div>
             <div class="comment-container">
                 <div class="note">
-                    <img class="mood" src="img/3.png" alt=""/>
+                    <img class="mood" src="<%= request.getSession().getAttribute("motm3Img") %>" alt=""/>
                 </div>
                 <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                    molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
+                    ${motm3}
                 </div>
             </div>
             <div class="comment-container">
                 <div class="note">
-                    <img class="mood" src="img/5.png" alt=""/>
+                    <img class="mood" src="<%= request.getSession().getAttribute("motm4Img") %>" alt=""/>
                 </div>
                 <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec nulla quam. Integer nisi ligula,
-                    molestie id diam ac, sagittis efficitur justo. Etiam aliquam aliquam dolor sed fringilla. Nullam at.
+                    ${motm4}
                 </div>
             </div>
         </div>
@@ -165,10 +161,10 @@
 </div>
 
 <!-- jQuery -->
-<script src="/JavaEECourse/js/jquery-3.1.1.min.js"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/JavaEECourse/js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 </body>
 </html>

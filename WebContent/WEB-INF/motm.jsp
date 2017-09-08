@@ -12,10 +12,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/javaEECourse/style/style.css" rel="stylesheet">
+    <link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="content">Comment (optional)</label>
-                                            <textarea id="content" class="content"></textarea>
+                                            <textarea id="content" class="content" name="comment"></textarea>
                                             <br/>
                                             <p>
                                               Make this comment public(*)&nbsp;
@@ -91,7 +91,9 @@
                                             </p>
                                         </div>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                                        	<form action="connection" method="post">
+												<input type="submit" value="Save">
+											</form>
                                         </div>
                                     </form>
                                 </div>
@@ -122,10 +124,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="/JavaEECourse/js/jquery-3.1.1.min.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/JavaEECourse/js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <!-- CKEditor -->
     <script src="https://cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
