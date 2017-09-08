@@ -1,2 +1,1 @@
-# fr.epf.krisscut
-JEE School Project
+Projet Java EE
