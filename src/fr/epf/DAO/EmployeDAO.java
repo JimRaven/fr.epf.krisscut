@@ -22,11 +22,14 @@ public class EmployeDAO {
 		return em.find(Employe.class, id);
 	}
 	
-	public List<Object> findAll() {
-		return em.createQuery("SELECT id FROM Employe").getResultList();
+	public List<Employe> findAll() {
+		return em.createQuery("FROM Employe").getResultList();
 	}
 
 	public List<Object> findSome(String login) {
+//		List<Employe> list = (List<Employe>) em.createQuery("SELECT name, pass, id, adminPriviledge FROM Employe WHERE login = '" + login + "'").getResultList();
+//		System.out.println(list.get(0).getName());
+
 		return em.createQuery("SELECT name, pass, id, adminPriviledge FROM Employe WHERE login = '" + login + "'").getResultList();
 	}
 }

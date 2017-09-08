@@ -30,16 +30,14 @@ public class IndexServlet extends HttpServlet {
 		if((Employe) request.getSession().getAttribute("employe") == null){
 			response.sendRedirect("connection");
 		}
-
-		List<Object> employeList = employeDao.findAll();
-		System.out.println(employeList.get(0));
-
 		Employe employe = (Employe) request.getSession().getAttribute("employe");
 		
-		if(employe.getAdminPriviledge()) {
-			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
-		} else {
+		if(!employe.getAdminPriviledge())
 			response.sendRedirect("employe");
-		}
+
+		List<Employe> employeList = employeDao.findAll();
+		
+		request.setAttribute("employeList", employeList);
+		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 }
