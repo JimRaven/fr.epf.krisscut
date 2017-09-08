@@ -12,10 +12,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
+    <link href="style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-12 title-motm">
                     <h1 class="page-header">How was your month?</h1>
-                    <p class="chapo">Content customized in the edit template page.</p>
+                    <p class="chapo">${desc}</p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

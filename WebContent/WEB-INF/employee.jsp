@@ -7,10 +7,10 @@
 	<title>Employee Page</title>
 
 	<!-- Bootstrap CSS -->
-    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
+    <link href="style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/javaEECourse/style/style.css" rel="stylesheet">
+    <link href="se/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"

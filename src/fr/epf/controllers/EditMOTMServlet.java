@@ -1,11 +1,18 @@
 package fr.epf.controllers;
 
 import java.io.IOException;
+
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.epf.dao.EmailDAO;
+import fr.epf.dao.MOTMDescDAO;
+import fr.epf.models.Email;
+import fr.epf.models.MOTMDesc;
 
 /**
  * Servlet implementation class EditMOTMServlet
@@ -14,9 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 public class EditMOTMServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	@Inject
+	private EmailDAO eMailDao;
+	@Inject
+	private MOTMDescDAO MOTMDescDao;
+	
     public EditMOTMServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -33,8 +42,20 @@ public class EditMOTMServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		Email eMailSettings = parseEMail(request.getParameter("subject"),request.getParameter("email"));
+		
+		MOTMDesc motmDesc = new MOTMDesc(request.getParameter("desc").toString());
+		
+		eMailDao.save(eMailSettings);
+		
+		MOTMDescDao.save(motmDesc);
+		
+		response.sendRedirect("admin");
+	}
+	
+	private Email parseEMail(String subject, String content) {
+		return new Email(subject, content, null);
 	}
 
 }

@@ -13,17 +13,19 @@ public class MOTM {
 	private int level;
 	private String comment;
 	private int visible;
+	private String owner;
 		
 	public MOTM() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public MOTM(int level, String comment, int visibility) {
+	public MOTM(int level, String comment, int visibility, String owner) {
 		super();
 		this.level = level;
 		this.comment = comment;
 		this.setVisible(visibility);
+		this.owner = owner;
 	}
 	
 	public Long getId() {
@@ -51,6 +53,14 @@ public class MOTM {
 
 	public void setVisible(int visible) {
 		this.visible = visible;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 	
 }

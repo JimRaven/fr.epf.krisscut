@@ -6,11 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.Table;
 
 @Entity
-//Could solve the mapping issue
-//@Table (name="Employee")
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

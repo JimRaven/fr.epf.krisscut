@@ -12,10 +12,10 @@
 <title>Mood of the month</title>
 
 <!-- Bootstrap CSS -->
-<link href="/fr.epf.Krisscut/style/bootstrap.min.css" rel="stylesheet">
+<link href="style/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="/fr.epf.Krisscut/style/style.css" rel="stylesheet">
+<link href="style/style.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -37,7 +37,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index">Mood of the month</a>
+			<a class="navbar-brand" href="admin">Mood of the month</a>
 		</div>
 		<!-- /.navbar-header --> </nav>
 
