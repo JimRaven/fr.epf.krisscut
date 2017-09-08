@@ -34,8 +34,10 @@ public class AddMemberServlet extends HttpServlet {
 		Employe employe = parseEmploye(request);
 		
 		List<Object> employeList = employeDao.findSome(employe.getLogin());
-		if(employeList.size() == 0 && employe.getLogin() != null){
+
+		if(employeList.size() == 0 && employe.getLogin() != null && employe.getPass() != null){
 			employeDao.save(employe);
+			request.setAttribute("error", "User added");
 		} else{
 			request.setAttribute("error", "Wrong login");
 		}
@@ -46,7 +48,7 @@ public class AddMemberServlet extends HttpServlet {
 	private Employe parseEmploye(HttpServletRequest request) {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		return new Employe(null, null, null, login, password, null);
+		return new Employe(null, null, null, login, password, false);
 		
 	}
 

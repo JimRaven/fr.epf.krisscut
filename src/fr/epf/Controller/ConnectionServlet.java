@@ -16,7 +16,7 @@ import fr.epf.Model.Employe;
 /**
  * Servlet implementation class ConnectionServlet
  */
-@WebServlet("/")
+@WebServlet("/connection")
 public class ConnectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -19,7 +19,15 @@ public class Employe {
 	private String pass;
 	private Boolean adminPriviledge;
 	
+	
 	public Employe(String name, String email, Date birth, String login, String pass, Boolean adminPriviledge) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.birth = birth;
+		this.login = login;
+		this.pass = pass;
+		this.adminPriviledge = adminPriviledge;
 	}
 	
 	public Long getId() {

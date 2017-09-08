@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -70,16 +71,17 @@
                                 <div class="col-xs-12">
                                     <form action="" method="post" class="">
                                         <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <input type="text" class="input-lg form-control" id="name" placeholder="Nom">
+                                            <label for="error"><c:out value = "${error}"/></label>
                                         </div>
+                                        
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="input-lg form-control" id="email" placeholder="Email Address">
+                                            <label for="login">Login</label>
+                                            <input type="text" class="input-lg form-control" name="login" id="login" placeholder="Login" required="true">
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="date">Birthdate</label>
-                                            <input type="text" class="input-lg form-control" id="date" placeholder="DD/MM/YYYY">
+                                            <label for="password">Password</label>
+                                            <input type="text" class="input-lg form-control" name="password" id="password" placeholder="Password" required="true">
                                         </div>
 
                                         <div class="text-right">
@@ -111,10 +113,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="/JavaEECourse/js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="/JavaEECourse/js/bootstrap.min.js"></script>
 
 </body>
 </html>
