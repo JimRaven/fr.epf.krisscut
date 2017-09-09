@@ -1,5 +1,6 @@
 package fr.epf.DAO;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Singleton;
@@ -16,6 +17,13 @@ public class EmployeDAO {
 
 	public void save(Employe employe) {
 		em.persist(employe);
+	}
+	
+	public void update(Employe employe) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(employe.getBirth());
+		String string = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE);
+		em.createQuery("UPDATE Employe SET birth = '" + string + "', email = '" + employe.getEmail() + "', name = '" + employe.getName() + "', pass = '" + employe.getPass() + "' WHERE login = '" + employe.getLogin() + "'").executeUpdate();
 	}
 	
 	public Employe findOne(Long id) {

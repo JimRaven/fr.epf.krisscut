@@ -42,7 +42,7 @@ public class EditMemberServlet extends HttpServlet {
 			
 			try {
 				employe = parseEmploye(request);
-				employeDao.save(employe);
+				employeDao.update(employe);
 				request.setAttribute("error", "user updated");
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -66,7 +66,7 @@ public class EditMemberServlet extends HttpServlet {
 		if(string != "")
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(string);
 		else date = ((Employe) request.getAttribute("employe")).getBirth();
-
+		
 		return new Employe(name, email, date, login, password, false);
 	}
 
