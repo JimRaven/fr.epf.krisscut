@@ -21,39 +21,24 @@ import fr.epf.models.MOTM;
 @WebServlet("/admin")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	int totalCounter;
-	int level1Counter;
-	int level2Counter;
-	int level3Counter;
-	int level4Counter;
-	int level5Counter;
-	
+       
 	@Inject
-	private MOTMDAO motmDAO;
 	private EmployeeDAO employeeDao;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		retrievePublicRecentComments(request, response);
-
-		retrieveMOTMCounters(request, response);
-
-		determineAverage(request,response);
-
-		Employee employee = (Employee) request.getSession().getAttribute("employee");
-
+	
+    public IndexServlet() {
+    }
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((Employee) request.getSession().getAttribute("employee") == null){
 			response.sendRedirect("connection");
-		}
-
-		List<Object> employeeList = employeeDao.findAll();
-
-		if(employee.getAdminPriviledge()) {
-			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
-		} else {
+		
+		if(!employee.getAdminPriviledge())
 			response.sendRedirect("employee");
+
+		List<Employee> employeeList = employeeDao.findAll();
+
+		request.setAttribute("employeeList", employeeList);
+			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 		}
 	}
 
