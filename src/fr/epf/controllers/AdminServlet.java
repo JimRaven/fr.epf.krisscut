@@ -48,13 +48,15 @@ public class AdminServlet extends HttpServlet {
 			response.sendRedirect("connection");
 		}
 
-		//List<Object> employeeList = employeeDao.findAll();
-
-		if(employee.getAdminPriviledge()==1) {
-			request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
-		} else {
+    Employee employee = (Employee) request.getSession().getAttribute("employee");
+		
+		if(!employee.getAdminPriviledge())
 			response.sendRedirect("employee");
-		}
+
+		List<Employe> employeList = employeDao.findAll();
+		
+		request.setAttribute("employeList", employeList);
+		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 
 	private void retrievePublicRecentComments(HttpServletRequest request, HttpServletResponse response)

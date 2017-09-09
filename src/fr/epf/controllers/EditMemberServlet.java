@@ -39,7 +39,7 @@ public class EditMemberServlet extends HttpServlet {
 			
 		} else if (request.getParameter("action").equals("save")) {
 			employee = employeeDao.findOne(Long.parseLong(request.getParameter("id")));
-			request.setAttribute("employe", employee);
+			request.setAttribute("employee", employee);
 			
 			try {
 				employee = parseEmployee(request);

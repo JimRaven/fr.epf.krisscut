@@ -155,6 +155,7 @@
                                             </thead>
                                             <tbody>
 										      <c:forEach items = "${employeList}" var = "element">
+										        <c:if test = "${!element.adminPriviledge}">
 										          <tr>
 										            <td><c:out value = "${element.login}"/></td>
 										            <td><c:out value = "${element.email}"/></td>
@@ -170,6 +171,7 @@
                                   </form>
 										            </td>
 										          </tr>
+										          </c:if>
 										      </c:forEach>
                                             </tbody>
                                         </table>

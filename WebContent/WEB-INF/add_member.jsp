@@ -71,6 +71,10 @@
                                 <div class="col-xs-12">
                                     <form action="" method="post" class="">
                                         <div class="form-group">
+                                            <label for="error"><c:out value = "${error}"/></label>
+                                        </div>
+                                        
+                                        <div class="form-group">
                                             <label for="name">Name</label>
                                             <input type="text" class="input-lg form-control" id="name" placeholder="Nom">
                                         </div>
@@ -94,9 +98,6 @@
                                             <input type="text" class="input-lg form-control" name="password" id="password" placeholder="Password" required="true">
                                         </div>
 
-                                            <label for="error"><c:out value = "${error}"/></label>
-                                        </div>
-                                        
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Save</button>
                                         </div>
