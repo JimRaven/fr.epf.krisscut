@@ -37,7 +37,7 @@ public class ConnectionServlet extends HttpServlet {
 		employeeDao.save(employee);
 		
 		List<Object> employeeList = employeeDao.findSome(employee.getLogin());
-		Iterator employeeItr = employeeList.iterator();
+		Iterator<Object> employeeItr = employeeList.iterator();
 		
 		while(employeeItr.hasNext()) {
 			Object[] employeeObj = (Object[]) employeeItr.next();
@@ -45,6 +45,7 @@ public class ConnectionServlet extends HttpServlet {
 			if(employee.getPass().equals(employeeObj[1])) {
 				employee.setId((Long) employeeObj[2]);
 				employee.setPass("********");
+				employee.setAdminPriviledge((Boolean) employeeObj[3]);
 				
 				request.getSession().setAttribute("employee", employee);
 				

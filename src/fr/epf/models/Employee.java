@@ -32,6 +32,13 @@ public class Employee {
 		this.pass = pass;
 		this.adminPriviledge = adminPriviledge;
 	}
+
+	public Employee(String name, String pass, Long id, Boolean adminPriviledge) {
+		this.name = name;
+		this.pass = pass;
+		this.id = id;
+		this.adminPriviledge = adminPriviledge;
+	}
 	
 	public Long getId() {
 		return id;
