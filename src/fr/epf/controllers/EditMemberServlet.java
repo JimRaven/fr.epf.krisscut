@@ -68,7 +68,7 @@ public class EditMemberServlet extends HttpServlet {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(string);
 		else date = ((Employee) request.getAttribute("employee")).getBirth();
 		
-		return new Employee(name, email, date, login, password, false);
+		return new Employee(name, email, date, login, password, 0);
 	}
 
 }

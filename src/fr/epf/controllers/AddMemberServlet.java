@@ -33,9 +33,9 @@ public class AddMemberServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Employee employee = parseEmployee(request);
 		
-		List<Object> employeList = employeeDao.findSome(employee.getLogin());
+		List<Employee> employeeList = employeeDao.findSome(employee.getLogin());
 
-		if(employeList.size() == 0 && employee.getLogin() != null && employee.getPass() != null){
+		if(employeeList.size() == 0 && employee.getLogin() != null && employee.getPass() != null){
 			employeeDao.save(employee);
 			request.setAttribute("error", "User added");
 		} else{
@@ -48,7 +48,7 @@ public class AddMemberServlet extends HttpServlet {
 	private Employee parseEmployee(HttpServletRequest request) {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		return new Employee(null, null, null, login, password, false);
+		return new Employee(null, null, null, login, password, 0);
 		
 	}
 

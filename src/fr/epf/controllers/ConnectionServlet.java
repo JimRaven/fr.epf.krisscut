@@ -36,20 +36,20 @@ public class ConnectionServlet extends HttpServlet {
 		
 		employeeDao.save(employee);
 		
-		List<Object> employeeList = employeeDao.findSome(employee.getLogin());
-		Iterator<Object> employeeItr = employeeList.iterator();
+		List<Employee> employeeList = employeeDao.findSome(employee.getLogin());
+		Iterator<Employee> employeeItr = employeeList.iterator();
 		
 		while(employeeItr.hasNext()) {
-			Object[] employeeObj = (Object[]) employeeItr.next();
+			Employee employeeObj = employeeItr.next();
 			
-			if(employee.getPass().equals(employeeObj[1])) {
-				employee.setId((Long) employeeObj[2]);
+			if(employee.getPass().equals(employeeObj.getPass())) {
+				employee.setId((Long) employeeObj.getId());
 				employee.setPass("********");
-				employee.setAdminPriviledge(Integer.valueOf(employeeObj[3].toString()));
+				employee.setAdminPriviledge(employeeObj.getAdminPriviledge());
 				
 				request.getSession().setAttribute("employee", employee);
 				
-				if((Boolean) employeeObj[3]) {
+				if(employee.getAdminPriviledge()==0) {
 					response.sendRedirect("motm");
 				}else {
 					response.sendRedirect("employee");
@@ -64,7 +64,7 @@ public class ConnectionServlet extends HttpServlet {
 	private Employee parseEmployee(HttpServletRequest request) {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		return new Employee(null, null, null, login, password, true);
+		return new Employee(null, null, null, login, password, 1);
 		
 	}
 

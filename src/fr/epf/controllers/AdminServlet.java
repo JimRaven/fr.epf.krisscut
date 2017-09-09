@@ -48,12 +48,12 @@ public class AdminServlet extends HttpServlet {
 			response.sendRedirect("connection");
 		}
 
-    Employee employee = (Employee) request.getSession().getAttribute("employee");
+    employee = (Employee) request.getSession().getAttribute("employee");
 		
-		if(!employee.getAdminPriviledge())
+		if(employee.getAdminPriviledge()!=0)
 			response.sendRedirect("employee");
 
-		List<Employe> employeList = employeDao.findAll();
+		List<Employee> employeList = employeeDao.findAll();
 		
 		request.setAttribute("employeList", employeList);
 		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
