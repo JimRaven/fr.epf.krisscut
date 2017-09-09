@@ -1,4 +1,4 @@
-package fr.epf.Controller;
+package fr.epf.controllers;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.epf.DAO.EmployeDAO;
-import fr.epf.Model.Employe;
+import fr.epf.dao.EmployeeDAO;
+import fr.epf.models.Employee;
+
 
 /**
  * Servlet implementation class EditMemberServlet
@@ -23,26 +24,26 @@ public class EditMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private EmployeDAO employeDao;
+	private EmployeeDAO employeeDao;
 	
     public EditMemberServlet() {
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Employe employe = null;
+		Employee employee = null;
 		if(request.getParameter("action").equals("call")) {
-			employe = employeDao.findOne(Long.parseLong(request.getParameter("id")));
-			request.setAttribute("employe", employe);
+			employee = employeeDao.findOne(Long.parseLong(request.getParameter("id")));
+			request.setAttribute("employe", employee);
 			
 			request.getRequestDispatcher("/WEB-INF/edit_member.jsp").forward(request, response);
 			
 		} else if (request.getParameter("action").equals("save")) {
-			employe = employeDao.findOne(Long.parseLong(request.getParameter("id")));
-			request.setAttribute("employe", employe);
+			employee = employeeDao.findOne(Long.parseLong(request.getParameter("id")));
+			request.setAttribute("employe", employee);
 			
 			try {
-				employe = parseEmploye(request);
-				employeDao.update(employe);
+				employee = parseEmployee(request);
+				employeeDao.update(employee);
 				request.setAttribute("error", "user updated");
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -55,19 +56,19 @@ public class EditMemberServlet extends HttpServlet {
 
 	}
 	
-	private Employe parseEmploye(HttpServletRequest request) throws ParseException {
-		String login = ((Employe) request.getAttribute("employe")).getLogin();
+	private Employee parseEmployee(HttpServletRequest request) throws ParseException {
+		String login = ((Employee) request.getAttribute("employee")).getLogin();
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		Date date = ((Employe) request.getAttribute("employe")).getBirth();
+		Date date = ((Employee) request.getAttribute("employee")).getBirth();
 
 		String string = request.getParameter("birth");
 		if(string != "")
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(string);
-		else date = ((Employe) request.getAttribute("employe")).getBirth();
+		else date = ((Employee) request.getAttribute("employee")).getBirth();
 		
-		return new Employe(name, email, date, login, password, false);
+		return new Employee(name, email, date, login, password, false);
 	}
 
 }

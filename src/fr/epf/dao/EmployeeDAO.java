@@ -1,5 +1,6 @@
 package fr.epf.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Singleton;
@@ -35,7 +36,7 @@ public class EmployeeDAO {
 		return em.createQuery("FROM Employee").getResultList();
 	}
 
-	public List<Object> findSome(String login) {
+	public List<Employee> findSome(String login) {
 //		List<Employee> list = (List<Employee>) em.createQuery("SELECT name, pass, id, adminPriviledge FROM Employee WHERE login = '" + login + "'").getResultList();
 //		System.out.println(list.get(0).getName());
 

@@ -17,13 +17,13 @@ public class Employee {
 	private Date birth;
 	private String login;
 	private String pass;
-	private Boolean adminPriviledge;
+	private int adminPriviledge;
 	
 	public Employee() {
 		super();
 	}
 
-	public Employee(String name, String email, Date birth, String login, String pass, Boolean adminPriviledge) {
+	public Employee(String name, String email, Date birth, String login, String pass, int adminPriviledge) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -33,7 +33,7 @@ public class Employee {
 		this.adminPriviledge = adminPriviledge;
 	}
 
-	public Employee(String name, String pass, Long id, Boolean adminPriviledge) {
+	public Employee(String name, String pass, Long id, int adminPriviledge) {
 		this.name = name;
 		this.pass = pass;
 		this.id = id;
@@ -76,10 +76,10 @@ public class Employee {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public Boolean getAdminPriviledge() {
+	public int getAdminPriviledge() {
 		return adminPriviledge;
 	}
-	public void setAdminPriviledge(Boolean adminPriviledge) {
+	public void setAdminPriviledge(int adminPriviledge) {
 		this.adminPriviledge = adminPriviledge;
 	}
 }

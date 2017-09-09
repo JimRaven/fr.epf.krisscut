@@ -83,9 +83,6 @@
                                             <label for="date">Birthdate</label>
                                             <input type="text" class="input-lg form-control" id="date" placeholder="DD/MM/YYYY">
                                         </div>
-
-                                            <label for="error"><c:out value = "${error}"/></label>
-                                        </div>
                                         
                                         <div class="form-group">
                                             <label for="login">Login</label>
@@ -97,6 +94,9 @@
                                             <input type="text" class="input-lg form-control" name="password" id="password" placeholder="Password" required="true">
                                         </div>
 
+                                            <label for="error"><c:out value = "${error}"/></label>
+                                        </div>
+                                        
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Save</button>
                                         </div>

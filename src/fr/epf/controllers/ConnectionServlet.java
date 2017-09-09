@@ -45,12 +45,12 @@ public class ConnectionServlet extends HttpServlet {
 			if(employee.getPass().equals(employeeObj[1])) {
 				employee.setId((Long) employeeObj[2]);
 				employee.setPass("********");
-				employee.setAdminPriviledge((Boolean) employeeObj[3]);
+				employee.setAdminPriviledge(Integer.valueOf(employeeObj[3].toString()));
 				
 				request.getSession().setAttribute("employee", employee);
 				
 				if((Boolean) employeeObj[3]) {
-					response.sendRedirect("dashboard");
+					response.sendRedirect("motm");
 				}else {
 					response.sendRedirect("employee");
 				}

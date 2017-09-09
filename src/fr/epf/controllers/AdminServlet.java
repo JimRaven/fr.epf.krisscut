@@ -50,7 +50,7 @@ public class AdminServlet extends HttpServlet {
 
 		//List<Object> employeeList = employeeDao.findAll();
 
-		if(employee.getAdminPriviledge()) {
+		if(employee.getAdminPriviledge()==1) {
 			request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("employee");

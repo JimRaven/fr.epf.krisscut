@@ -10,36 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.epf.dao.EmployeeDAO;
 import fr.epf.dao.MOTMDAO;
-import fr.epf.models.Employee;
 import fr.epf.models.MOTM;
 
 /**
  * Servlet implementation class IndexServlet
  */
-@WebServlet("/admin")
+@WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	@Inject
-	private EmployeeDAO employeeDao;
+
+	int totalCounter;
+	int level1Counter;
+	int level2Counter;
+	int level3Counter;
+	int level4Counter;
+	int level5Counter;
 	
-    public IndexServlet() {
-    }
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if((Employee) request.getSession().getAttribute("employee") == null){
-			response.sendRedirect("connection");
-		
-		if(!employee.getAdminPriviledge())
-			response.sendRedirect("employee");
+	@Inject
+	private MOTMDAO motmDAO;
 
-		List<Employee> employeeList = employeeDao.findAll();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		request.setAttribute("employeeList", employeeList);
-			request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
-		}
+		retrievePublicRecentComments(request, response);
+
+		retrieveMOTMCounters(request, response);
+
+		determineAverage(request,response);
+
+		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
 
 	private void retrievePublicRecentComments(HttpServletRequest request, HttpServletResponse response)

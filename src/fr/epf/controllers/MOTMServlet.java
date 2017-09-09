@@ -55,7 +55,7 @@ public class MOTMServlet extends HttpServlet {
 		MOTM motm = parseMOTM(request);
 		
 		motmDAO.save(motm);
-		doGet(request, response);
+		response.sendRedirect("admin");
 	}
 	
 	private MOTM parseMOTM(HttpServletRequest request) {
