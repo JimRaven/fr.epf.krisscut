@@ -33,7 +33,7 @@
                                 <tr>
                                     <td style="color: white;">
                                         <p style="font-size: 1.0em">
-                                            Resourcepool &bull; 2017
+                                            Krisscut, le krisscutien &bull; 2017
                                         </p>
 
                                     </td>

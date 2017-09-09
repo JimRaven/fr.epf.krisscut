@@ -1,4 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,10 +14,10 @@
     <title>Mood of the month</title>
 
     <!-- Bootstrap CSS -->
-    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link href="/javaEECourse/style/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="style/style.css" rel="stylesheet">
+    <link href="/javaEECourse/style/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -71,32 +72,32 @@
                                 <div class="col-xs-12">
                                     <form action="" method="post" class="">
                                         <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <input type="text" class="input-lg form-control" id="name" placeholder="Nom">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="input-lg form-control" id="email" placeholder="Email Address">
+                                            <label for="error"><c:out value = "${error}"/></label>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="date">Birthdate</label>
-                                            <input type="text" class="input-lg form-control" id="date" placeholder="DD/MM/YYYY">
+                                            <label for="birth">Birthdate :</label>
+                                            <input type="date" class="input-lg form-control" name="birth" id="birth" value="<c:out value = "${employe.birth}"/>">
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <label for="login">Login</label>
-                                            <input type="text" class="input-lg form-control" name="login" id="login" placeholder="Login" required="true">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="input-lg form-control" name="email" id="email" value="<c:out value = "${employe.email}"/>">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="input-lg form-control" name="name" id="name" value="<c:out value = "${employe.name}"/>">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="text" class="input-lg form-control" name="password" id="password" placeholder="Password" required="true">
+                                            <input type="password" class="input-lg form-control" name="password" id="password" value="<c:out value = "${employe.pass}"/>">
                                         </div>
 
-                                            <label for="error"><c:out value = "${error}"/></label>
-                                        </div>
-                                        
+                                        <input type="text" value="save" class="hidden" name="action">
+                                        <input type="text" value="<c:out value = "${employe.id}"/>" class="hidden" name="id">
+                                        <input type="text" value="<c:out value = "${employe.login}"/>" class="hidden" name="login">
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Save</button>
                                         </div>
@@ -126,10 +127,10 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="/JavaEECourse/js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="/JavaEECourse/js/bootstrap.min.js"></script>
 
 </body>
 </html>

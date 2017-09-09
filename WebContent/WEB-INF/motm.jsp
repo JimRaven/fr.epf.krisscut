@@ -34,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Mood of the month</a>
+                <a class="navbar-brand" href="admin">Mood of the month</a>
             </div>
             <!-- /.navbar-header -->
         </nav>
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-12 title-motm">
                     <h1 class="page-header">How was your month?</h1>
-                    <p class="chapo">Content customized in the edit template page.</p>
+                    <p class="chapo">${desc}</p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

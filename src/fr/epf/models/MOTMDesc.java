@@ -1,0 +1,36 @@
+package fr.epf.models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class MOTMDesc {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String content;
+	
+	public MOTMDesc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public MOTMDesc(String content) {
+		super();
+		this.content = content;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+}

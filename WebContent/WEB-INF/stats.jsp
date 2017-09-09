@@ -37,7 +37,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index">Mood of the month</a>
+			<a class="navbar-brand" href="admin">Mood of the month</a>
 		</div>
 		<!-- /.navbar-header --> </nav>
 

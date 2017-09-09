@@ -34,7 +34,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index">Mood of the month</a>
+                <a class="navbar-brand" href="admin">Mood of the month</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -91,15 +91,15 @@
                                     <form action="" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Subject</label>
-                                            <input type="text" class="input-lg form-control" id="name" value="Hey ${name}, let's hear it for your mood of the month!">
+                                            <input type="text" name="subject" class="input-lg form-control" id="name" value="Hey ${name}, let's hear it for your mood of the month!">
                                         </div>
                                         <div class="form-group">
                                             <label for="email-template">Email template (<a href="newsletter" target="_blank">check the email template</a>)</label>
-                                            <textarea id="email-template" class="content"></textarea>
+                                            <textarea id="email-template" name="email" class="content"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="motm-template">Vote page template</label>
-                                            <textarea id="motm-template" class="content"></textarea>
+                                            <textarea id="motm-template" name="desc" class="content"></textarea>
                                         </div>
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Save the MOTM</button>

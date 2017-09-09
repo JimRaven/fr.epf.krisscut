@@ -6,11 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-//Could solve the mapping issue
-//@Table (name="Employee")
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,20 +17,26 @@ public class Employee {
 	private Date birth;
 	private String login;
 	private String pass;
-	private Boolean adminPriviledge;
+	private int adminPriviledge;
 	
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(String name, String email, Date birth, String login, String pass, Boolean adminPriviledge) {
+	public Employee(String name, String email, Date birth, String login, String pass, int adminPriviledge) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.birth = birth;
 		this.login = login;
 		this.pass = pass;
+		this.adminPriviledge = adminPriviledge;
+	}
+
+	public Employee(String name, String pass, Long id, int adminPriviledge) {
+		this.name = name;
+		this.pass = pass;
+		this.id = id;
 		this.adminPriviledge = adminPriviledge;
 	}
 	
@@ -73,10 +76,10 @@ public class Employee {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public Boolean getAdminPriviledge() {
+	public int getAdminPriviledge() {
 		return adminPriviledge;
 	}
-	public void setAdminPriviledge(Boolean adminPriviledge) {
+	public void setAdminPriviledge(int adminPriviledge) {
 		this.adminPriviledge = adminPriviledge;
 	}
 }

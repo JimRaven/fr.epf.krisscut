@@ -10,14 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.epf.dao.EmployeeDAO;
 import fr.epf.dao.MOTMDAO;
+import fr.epf.models.Employee;
 import fr.epf.models.MOTM;
 
-@WebServlet("/dashboard")
-public class DashboardServlet extends HttpServlet {
-	
+/**
+ * Servlet implementation class IndexServlet
+ */
+@WebServlet("/admin")
+public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	int totalCounter;
 	int level1Counter;
 	int level2Counter;
@@ -27,16 +31,30 @@ public class DashboardServlet extends HttpServlet {
 	
 	@Inject
 	private MOTMDAO motmDAO;
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private EmployeeDAO employeeDao;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		retrievePublicRecentComments(request, response);
 
 		retrieveMOTMCounters(request, response);
 
 		determineAverage(request,response);
-		
-		request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
+
+		Employee employee = (Employee) request.getSession().getAttribute("employee");
+
+		if(employee == null){
+			response.sendRedirect("connection");
+		}
+
+		//List<Object> employeeList = employeeDao.findAll();
+
+		if(employee.getAdminPriviledge()==1) {
+			request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
+		} else {
+			response.sendRedirect("employee");
+		}
 	}
 
 	private void retrievePublicRecentComments(HttpServletRequest request, HttpServletResponse response)
