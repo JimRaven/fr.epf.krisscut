@@ -27,6 +27,7 @@ public class AddMemberServlet extends HttpServlet {
 	@Inject
 	private EmployeeDAO employeeDao;
 
+	// Empty constructor to be called on requests
     public AddMemberServlet() {
     }
 
@@ -39,6 +40,7 @@ public class AddMemberServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/add_member.jsp").forward(request, response);
 	}
 
+	// Add a member to the database
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Employee employee = parseEmployee(request);
 		

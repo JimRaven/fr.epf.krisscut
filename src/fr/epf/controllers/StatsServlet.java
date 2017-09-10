@@ -35,6 +35,7 @@ public class StatsServlet extends HttpServlet {
 		if(employee == null){
 			response.sendRedirect("connection");
 		}
+		
 		retrievePublicRecentComments(request, response);
 
 		retrieveMOTMCounters(request, response);
@@ -46,6 +47,7 @@ public class StatsServlet extends HttpServlet {
 	
 	private void retrievePublicRecentComments(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		List<MOTM> motmList = motmDAO.findRecentPublicComment();
 		MOTM motm1 = new MOTM();
 		MOTM motm2 = new MOTM();

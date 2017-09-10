@@ -22,6 +22,7 @@ public class NewsletterServlet extends HttpServlet {
        
     @Inject
     private EmailDAO eMailDao;
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Email> mailList = eMailDao.findAll();
 		if(!mailList.isEmpty()) {
@@ -31,11 +32,7 @@ public class NewsletterServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/newsletter.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

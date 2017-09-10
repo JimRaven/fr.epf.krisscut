@@ -18,7 +18,6 @@ public class Email {
 		
 	public Email() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Email(String subject, String content, Date date) {

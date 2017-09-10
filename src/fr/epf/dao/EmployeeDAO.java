@@ -22,6 +22,7 @@ public class EmployeeDAO {
 		em.persist(employee);
 	}
 	
+	// Create a default employee if no administrator is defined
 	public void createDefault() {
 		if(em.createQuery("FROM Employee WHERE login = 'admin' AND pass = 'admin'").getResultList().isEmpty()) {
 			Calendar cal = Calendar.getInstance();

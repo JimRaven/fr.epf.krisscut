@@ -29,23 +29,18 @@ public class MOTMServlet extends HttpServlet {
 	@Inject
 	private MOTMDescDAO MOTMDescDao;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public MOTMServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Employee employee = (Employee) request.getSession().getAttribute("employee");
 
 		if(employee == null){
 			response.sendRedirect("connection");
 		}
+		
+		// Retrieve  and display the description of the MOTM
 		List<MOTMDesc> MOTMDescList = MOTMDescDao.findAll();
 		
 		MOTMDesc motmDesc = new MOTMDesc("");
@@ -56,9 +51,7 @@ public class MOTMServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/motm.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Save the MOTM
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MOTM motm = parseMOTM(request);
 		
@@ -70,12 +63,14 @@ public class MOTMServlet extends HttpServlet {
 		Employee employee = (Employee)request.getSession().getAttribute("employee");
 		int level = Integer.parseInt(request.getParameter("note"));
 		String comment = request.getParameter("comment");
+		
+		// Define the visubility of the MOTM : private or public
 		int visibility = 0;
 		if(request.getParameter("public")!= null) {
 			visibility = 1;
 		}
-		return new MOTM(level,comment, visibility, employee.getLogin());
 		
+		return new MOTM(level,comment, visibility, employee.getLogin());
 	}
 
 }

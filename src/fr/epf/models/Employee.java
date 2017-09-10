@@ -19,10 +19,12 @@ public class Employee {
 	private String pass;
 	private int adminPriviledge;
 	
+	// Empty constructor called on requests
 	public Employee() {
 		super();
 	}
 
+	// Complete constructor when an administrator add a new employee
 	public Employee(String name, String email, Date birth, String login, String pass, int adminPriviledge) {
 		super();
 		this.name = name;

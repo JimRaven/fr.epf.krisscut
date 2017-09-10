@@ -14,7 +14,6 @@ public class MOTMDesc {
 	
 	public MOTMDesc() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public MOTMDesc(String content) {
 		super();

@@ -38,6 +38,7 @@ public class EditMemberServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/edit_member.jsp").forward(request, response);
 	}
 	
+	// Edit the selected employee
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Employee employee = null;
@@ -73,6 +74,7 @@ public class EditMemberServlet extends HttpServlet {
 
 	}
 
+	// Retrieve the employee informations to edit them
 	private Employee parseEmployee(HttpServletRequest request) throws ParseException {
 		String login = ((Employee) request.getAttribute("employee")).getLogin();
 		String password = request.getParameter("password");

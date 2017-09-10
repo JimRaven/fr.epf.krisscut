@@ -23,6 +23,8 @@ public class ConnectionServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/connection.jsp").forward(request, response);
 	}
 
+	// On "login" button clicked, verify the user presence in the database and his status (employee or administrator),
+	// create a session and redirect him to his homepage.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Employee employee = employeeDao.findFirstByLoginAndPassword(request.getParameter("login"), request.getParameter("password"));
 		

@@ -19,6 +19,7 @@ import fr.epf.models.MOTM;
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// Mood level counters to display the ratios
 	int totalCounter;
 	int level1Counter;
 	int level2Counter;
@@ -33,7 +34,15 @@ public class AdminServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// If an employee or a user not connected tries to come to this page manually, it will be redirected 
+		if(employee == null){
+			response.sendRedirect("connection");
+		}
+		
+		if(employee.getAdminPriviledge()==0)
+			response.sendRedirect("employee");
+		
+		
 		retrievePublicRecentComments(request, response);
 
 		retrieveMOTMCounters(request, response);
@@ -42,20 +51,15 @@ public class AdminServlet extends HttpServlet {
 
 		Employee employee = (Employee) request.getSession().getAttribute("employee");
 
-		if(employee == null){
-			response.sendRedirect("connection");
-		}
-		
-		if(employee.getAdminPriviledge()==0)
-			response.sendRedirect("employee");
-
 		List<Employee> employeeList = employeeDao.findAll();
 		
+		//Display the number of registered members and the member list to allow consultation and edition
 		request.setAttribute("memberNumber", employeeList.size());
 		request.setAttribute("employeeList", employeeList);
 		request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
 	}
 
+	//Remove the selected member
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Employee employee = employeeDao.findOne(Long.parseLong(request.getParameter("id")));
 		employeeDao.removeOne(employee.getId());

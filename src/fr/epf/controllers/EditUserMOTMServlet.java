@@ -29,18 +29,10 @@ public class EditUserMOTMServlet extends HttpServlet {
 	@Inject
 	private MOTMDescDAO MOTMDescDao;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public EditUserMOTMServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Employee employee = (Employee) request.getSession().getAttribute("employee");
@@ -50,6 +42,7 @@ public class EditUserMOTMServlet extends HttpServlet {
 		}
 		List<MOTMDesc> MOTMDescList = MOTMDescDao.findAll();
 
+		// Display the latest MOTM posted by this employee if there is one
 		MOTMDesc motmDesc = new MOTMDesc("");
 		if (!MOTMDescList.isEmpty()) {
 			motmDesc = MOTMDescList.get(0);
@@ -58,10 +51,7 @@ public class EditUserMOTMServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/edit_user_motm.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	// Edit the latest MOTM posted
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		MOTM motm = null;

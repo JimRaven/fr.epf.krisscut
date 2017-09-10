@@ -10,6 +10,7 @@ public class MOTM {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	private int level;
 	private String comment;
 	private int visible;
@@ -17,7 +18,6 @@ public class MOTM {
 		
 	public MOTM() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public MOTM(int level, String comment, int visibility, String owner) {

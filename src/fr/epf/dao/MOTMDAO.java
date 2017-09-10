@@ -27,6 +27,7 @@ public class MOTMDAO {
 		return em.find(MOTM.class, id);
 	}
 
+	// Find a MOTM with the user who posted it name
 	public List<MOTM> findByOwner(String owner) {
 		return em.createQuery(FIND_MOTM_BY_OWNER+ owner+"'").getResultList();
 	}

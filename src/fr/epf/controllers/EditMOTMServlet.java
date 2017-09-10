@@ -29,7 +29,6 @@ public class EditMOTMServlet extends HttpServlet {
 	
     public EditMOTMServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -44,9 +43,7 @@ public class EditMOTMServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/edit_motm.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	// Save the e-mail template for this month's Mood Of The Month
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Email eMailSettings = parseEMail(request.getParameter("subject"),request.getParameter("email"));

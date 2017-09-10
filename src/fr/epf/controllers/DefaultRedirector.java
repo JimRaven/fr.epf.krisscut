@@ -14,6 +14,7 @@ import fr.epf.models.Employee;
 
 @WebServlet("/")
 public class DefaultRedirector extends HttpServlet {
+	// By default, on arrival on the website, detect the connection status of the user and redirect him to the appropriate page
 	
 	@Inject
 	private EmployeeDAO employeeDao;

@@ -50,6 +50,7 @@ public class EmployeeServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/employee.jsp").forward(request, response);
 	}
 	
+	// Remove a posted MOTM
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MOTM motm = motmDAO.findOne(Long.parseLong(request.getParameter("id")));
 		motmDAO.removeOne(motm.getId());
