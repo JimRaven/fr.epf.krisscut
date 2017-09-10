@@ -1,6 +1,7 @@
 package fr.epf.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,38 +48,44 @@ public class AdminServlet extends HttpServlet {
 		if(employee == null){
 			response.sendRedirect("connection");
 		}
-
-    employee = (Employee) request.getSession().getAttribute("employee");
 		
-		if(employee.getAdminPriviledge()!=0)
+		if(employee.getAdminPriviledge()==0)
 			response.sendRedirect("employee");
 
-		List<Employee> employeList = employeeDao.findAll();
+		List<Employee> employeeList = new ArrayList<Employee>();
+		employeeList.add((Employee)request.getSession().getAttribute("employee"));
+		System.out.println("Steve");
 		
-		request.setAttribute("employeList", employeList);
-		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
+		request.setAttribute("employeeList", employeeList);
+		request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
 	}
 
 	private void retrievePublicRecentComments(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<MOTM> motmList = motmDAO.findRecentPublicComment();
-
-		MOTM motm1 = motmList.get(0);
+		MOTM motm1 = new MOTM();
+		MOTM motm2 = new MOTM();
+		MOTM motm3 = new MOTM();
+		MOTM motm4 = new MOTM();
+		
+		if(motmList.size()>=4){
+			motm1 = motmList.get(0);
+			motm2 = motmList.get(1);
+			motm3 = motmList.get(2);
+			motm4 = motmList.get(3);
+		}
 		String motm1Img = "img/" + motm1.getLevel() + ".png";
 		request.getSession().setAttribute("motm1Img", motm1Img);
 		request.getSession().setAttribute("motm1", motm1.getComment());
 
-		MOTM motm2 = motmList.get(1);
 		String motm2Img = "img/" + motm2.getLevel() + ".png";
 		request.getSession().setAttribute("motm2Img", motm2Img);
 		request.getSession().setAttribute("motm2", motm2.getComment());
 
-		MOTM motm3 = motmList.get(2);
 		String motm3Img = "img/" + motm3.getLevel() + ".png";
 		request.getSession().setAttribute("motm3Img", motm3Img);
 		request.getSession().setAttribute("motm3", motm3.getComment());
 
-		MOTM motm4 = motmList.get(3);
 		String motm4Img = "img/" + motm4.getLevel() + ".png";
 		request.getSession().setAttribute("motm4Img", motm4Img);
 		request.getSession().setAttribute("motm4", motm4.getComment());
@@ -86,19 +93,12 @@ public class AdminServlet extends HttpServlet {
 	
 	private void retrieveMOTMCounters(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Long> totalCount = motmDAO.dataCount();
-		totalCounter = totalCount.get(0).intValue();
-
-		List<Long> level1Count = motmDAO.levelCount(1);
-		level1Counter = level1Count.get(0).intValue();
-		List<Long> level2Count = motmDAO.levelCount(2);
-		level2Counter = level2Count.get(0).intValue();
-		List<Long> level3Count = motmDAO.levelCount(3);
-		level3Counter = level3Count.get(0).intValue();
-		List<Long> level4Count = motmDAO.levelCount(4);
-		level4Counter = level4Count.get(0).intValue();
-		List<Long> level5Count = motmDAO.levelCount(5);
-		level5Counter = level5Count.get(0).intValue();
+		totalCounter = motmDAO.dataCount();
+		level1Counter = motmDAO.levelCount(1);
+		level2Counter = motmDAO.levelCount(2);
+		level3Counter = motmDAO.levelCount(3);
+		level4Counter = motmDAO.levelCount(4);
+		level5Counter = motmDAO.levelCount(5);
 		
 		request.getSession().setAttribute("level1Counter", level1Counter);
 		request.getSession().setAttribute("level2Counter", level2Counter);

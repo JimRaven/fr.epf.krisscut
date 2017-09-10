@@ -61,7 +61,7 @@
                                             <div class="notation">
                                                 <label for="n1">
                                                     <input id="n1" name="note" type="radio" value="1"/>
-                                                    <img src="img/caca.png" alt="Sad" width="100" height="100"/>
+                                                    <img src="img/1.png" alt="Sad" width="100" height="100"/>
                                                 </label>
                                                 <label for="n2">
                                                     <input id="n2" name="note" type="radio" value="2"/>

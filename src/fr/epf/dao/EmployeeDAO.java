@@ -43,8 +43,10 @@ public class EmployeeDAO {
 		return em.find(Employee.class, id);
 	}
 	
-	public List<Employee> findAll() {
-		return em.createQuery("FROM Employee").getResultList();
+	public String getAll() {
+		if(em.createQuery("SELECT * FROM Employee")==null) {
+			return "fucked up";
+		}else return "fucked up too";
 	}
 	
 	public Employee findFirstByLoginAndPassword(String login, String password) {

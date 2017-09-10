@@ -33,12 +33,21 @@ public class MOTMDAO {
 		return em.createQuery(FIND_ALL_COMMENT_MOST_RECENT).getResultList();
 	}
 	
-	public List<Long> dataCount() {
-		return em.createQuery(COUNT_ALL_MOTM).getResultList();
+	public int dataCount() {
+		int result = 0;
+		List<Long> resultList= em.createQuery(COUNT_ALL_MOTM).getResultList();
+		if(!resultList.isEmpty()) {
+			result = Math.toIntExact(resultList.get(0));
+		}
+		return result;
 	}
 	
-	public List<Long> levelCount(int level){
-
-		return em.createQuery(COUNT_MOTM_BY_LEVEL+level).getResultList();
+	public int levelCount(int level){
+		int result = 0;
+		List<Long> resultList= em.createQuery(COUNT_MOTM_BY_LEVEL+level).getResultList();
+		if(!resultList.isEmpty()) {
+			result = Math.toIntExact(resultList.get(0));
+		}
+		return result;
 	}
 }

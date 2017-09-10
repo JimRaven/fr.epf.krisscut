@@ -43,7 +43,11 @@ public class MOTMServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<MOTMDesc> MOTMDescList = MOTMDescDao.findAll();
-		MOTMDesc motmDesc = MOTMDescList.get(0);
+		
+		MOTMDesc motmDesc = new MOTMDesc("");
+		if(!MOTMDescList.isEmpty()) {
+			motmDesc = MOTMDescList.get(0);
+		}
 		request.setAttribute("desc", motmDesc.getContent());
 		request.getRequestDispatcher("WEB-INF/motm.jsp").forward(request, response);
 	}
