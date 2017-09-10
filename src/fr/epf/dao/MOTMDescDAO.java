@@ -15,7 +15,7 @@ public class MOTMDescDAO {
 	private EntityManager em;
 	
 	public void save(MOTMDesc motmDesc) {
-		//em.createQuery("");
+		em.createQuery("DELETE FROM MOTMDesc ").executeUpdate();
 		em.persist(motmDesc);
 	}
 

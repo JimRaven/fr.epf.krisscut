@@ -15,11 +15,11 @@ public class EmailDAO {
 	private EntityManager em;
 	
 	public void save(Email eMail) {
-		//em.createQuery("");
+		em.createQuery("DELETE FROM Email ").executeUpdate();
 		em.persist(eMail);
 	}
 
 	public List<Email> findAll() {
-		return em.createQuery("FROM email").getResultList();
+		return em.createQuery("FROM Email").getResultList();
 	}
 }

@@ -1,7 +1,6 @@
 package fr.epf.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,9 +15,6 @@ import fr.epf.dao.MOTMDAO;
 import fr.epf.models.Employee;
 import fr.epf.models.MOTM;
 
-/**
- * Servlet implementation class IndexServlet
- */
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +28,7 @@ public class AdminServlet extends HttpServlet {
 	
 	@Inject
 	private MOTMDAO motmDAO;
+	@Inject
 	private EmployeeDAO employeeDao;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,14 +49,19 @@ public class AdminServlet extends HttpServlet {
 		if(employee.getAdminPriviledge()==0)
 			response.sendRedirect("employee");
 
-		List<Employee> employeeList = new ArrayList<Employee>();
-		employeeList.add((Employee)request.getSession().getAttribute("employee"));
-		System.out.println("Steve");
+		List<Employee> employeeList = employeeDao.findAll();
 		
+		request.setAttribute("memberNumber", employeeList.size());
 		request.setAttribute("employeeList", employeeList);
 		request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Employee employee = employeeDao.findOne(Long.parseLong(request.getParameter("id")));
+		employeeDao.removeOne(employee.getId());
+		response.sendRedirect("admin");
+	}
+	
 	private void retrievePublicRecentComments(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<MOTM> motmList = motmDAO.findRecentPublicComment();

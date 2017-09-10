@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import fr.epf.dao.EmailDAO;
 import fr.epf.dao.MOTMDescDAO;
 import fr.epf.models.Email;
+import fr.epf.models.Employee;
 import fr.epf.models.MOTMDesc;
 
 /**
@@ -35,6 +36,11 @@ public class EditMOTMServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Employee employee = (Employee) request.getSession().getAttribute("employee");
+
+		if(employee == null){
+			response.sendRedirect("connection");
+		}
 		request.getRequestDispatcher("WEB-INF/edit_motm.jsp").forward(request, response);
 	}
 

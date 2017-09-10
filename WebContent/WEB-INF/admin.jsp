@@ -74,7 +74,7 @@
 									<i class="fa fa-user fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">46</div>
+									<div class="huge">${memberNumber}</div>
 									<div class="huge-label">Registered members</div>
 								</div>
 							</div>
@@ -118,14 +118,14 @@
 									<i class="fa fa-tachometer fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">Dashboard</div>
+									<div class="huge">Your page</div>
 									<div class="huge-label">View & Export</div>
 								</div>
 							</div>
 						</div>
-						<a href="dashboard">
+						<a href="employee">
 							<div class="panel-footer">
-								<span class="pull-left">Show dashboard</span> <span
+								<span class="pull-left">Show personal window</span> <span
 									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 								<div class="clearfix"></div>
 							</div>
@@ -158,11 +158,11 @@
 											<tbody>
 												<c:forEach items="${employeeList}" var="element">
 													<tr>
-														<td><c:out value="${element.login}" /></td>
+														<td><c:out value="${element.name}" /></td>
 														<td><c:out value="${element.email}" /></td>
 														<td><fmt:formatDate type="date" dateStyle="medium"
 																value="${element.birth}" /></td>
-														<td class="text-right">
+														<td class="text-right" width=60>
 															<form action="edit_member" method="post">
 																<input type="number" value="${element.id}"
 																	class="hidden" name="id"> <input type="text"
@@ -170,6 +170,17 @@
 
 																<button type="submit" class="btn btn-sm btn-warning">
 																	<i class="fa fa-pencil"></i> Edit
+																</button>
+															</form>
+														</td>
+														<td class="text-right" width=80>
+															<form action="" method="post">
+																<input type="number" value="${element.id}"
+																	class="hidden" name="id"> <input type="text"
+																	value="call" class="hidden" name="action">
+
+																<button type="submit" class="btn btn-sm btn-danger">
+																	<i class="fa fa-trash"></i> Remove
 																</button>
 															</form>
 														</td>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.epf.dao.MOTMDAO;
+import fr.epf.models.Employee;
 import fr.epf.models.MOTM;
 
 @WebServlet("/stats")
@@ -29,6 +30,11 @@ public class StatsServlet extends HttpServlet {
 	private MOTMDAO motmDAO;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Employee employee = (Employee) request.getSession().getAttribute("employee");
+
+		if(employee == null){
+			response.sendRedirect("connection");
+		}
 		retrievePublicRecentComments(request, response);
 
 		retrieveMOTMCounters(request, response);
@@ -46,7 +52,16 @@ public class StatsServlet extends HttpServlet {
 		MOTM motm3 = new MOTM();
 		MOTM motm4 = new MOTM();
 		
-		if(motmList.size()>=4){
+		if(motmList.size()==1){
+			motm1 = motmList.get(0);
+		}else if(motmList.size()==2){
+			motm1 = motmList.get(0);
+			motm2 = motmList.get(1);
+		}else if(motmList.size()==3){
+			motm1 = motmList.get(0);
+			motm2 = motmList.get(1);
+			motm3 = motmList.get(2);
+		}else if(motmList.size()>=4){
 			motm1 = motmList.get(0);
 			motm2 = motmList.get(1);
 			motm3 = motmList.get(2);

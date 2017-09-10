@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,36 +64,40 @@
 											<label>Mood</label>
 											<div class="notation">
 												<label for="n1"> <input id="n1" name="note"
-													type="radio" value="1" /> <img src="img/1.png" alt="Sad"
-													width="100" height="100" />
+													type="radio" value="1" ${isLevel1} /> <img src="img/1.png"
+													alt="Sad" width="100" height="100" />
 												</label> <label for="n2"> <input id="n2" name="note"
-													type="radio" value="2" /> <img src="img/2.png"
+													type="radio" value="2" ${isLevel2} /> <img src="img/2.png"
 													alt="Not Happy" width="100" height="100" />
 												</label> <label for="n3"> <input id="n3" name="note"
-													type="radio" value="3" /> <img src="img/3.png"
+													type="radio" value="3" ${isLevel3} /> <img src="img/3.png"
 													alt="Average" width="100" height="100" />
 												</label> <label for="n4"> <input id="n4" name="note"
-													type="radio" value="4" /> <img src="img/4.png" alt="Happy"
-													width="100" height="100" />
+													type="radio" value="4" ${isLevel4} /> <img src="img/4.png"
+													alt="Happy" width="100" height="100" />
 												</label> <label for="n5"> <input id="n5" name="note"
-													type="radio" value="5" /> <img src="img/5.png"
+													type="radio" value="5" ${isLevel5} /> <img src="img/5.png"
 													alt="Super Happy" width="100" height="100" />
 												</label>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="content">Comment (optional)</label>
-											<textarea id="content" class="content" name="comment"></textarea>
+											<textarea id="content" class="content" name="comment"><c:out value = "${motm.comment}"/></textarea>
 											<br />
 											<p>
 												Make this comment public(*)&nbsp; <input name="public"
-													type="checkbox" />
+													type="checkbox" ${isVisible} />
 											</p>
 										</div>
+
+										<label for="error"><c:out value="${error}" /></label> <input
+											type="text" value="save" class="hidden" name="action">
+										<input type="text" value="<c:out value = "${motm.id}"/>"
+											class="hidden" name="id">
+
 										<div class="text-right">
-											<form action="connection" method="post">
-												<input type="submit" value="Save">
-											</form>
+											<button type="submit" class="btn btn-lg btn-primary">Save</button>
 										</div>
 									</form>
 								</div>
@@ -129,8 +135,8 @@
 	<!-- CKEditor -->
 	<script src="https://cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
 	<script>
-        CKEDITOR.replace('content');
-    </script>
+		CKEDITOR.replace('content');
+	</script>
 
 </body>
 </html>

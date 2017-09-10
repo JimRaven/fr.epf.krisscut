@@ -25,7 +25,7 @@ public class EmployeeDAO {
 	public void createDefault() {
 		if(em.createQuery("FROM Employee WHERE login = 'admin' AND pass = 'admin'").getResultList().isEmpty()) {
 			Calendar cal = Calendar.getInstance();
-			cal.set(1980, 1, 1, 0, 0, 0);
+			cal.set(1980, 0, 1, 0, 0, 0);
 			Date birth = cal.getTime();
 			Employee employee = new Employee("admin","default.email@krisscut.com",birth,"admin","admin", 1);
 			em.persist(employee);
@@ -35,18 +35,21 @@ public class EmployeeDAO {
 	public void update(Employee employee) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(employee.getBirth());
+		cal.add(Calendar.MONTH, 1); 
 		String string = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE);
 		em.createQuery("UPDATE Employee SET birth = '" + string + "', email = '" + employee.getEmail() + "', name = '" + employee.getName() + "', pass = '" + employee.getPass() + "' WHERE login = '" + employee.getLogin() + "'").executeUpdate();
+	}
+	
+	public void removeOne(Long id) {
+		em.createQuery("DELETE FROM Employee WHERE id=" + id).executeUpdate();
 	}
 	
 	public Employee findOne(Long id) {
 		return em.find(Employee.class, id);
 	}
 	
-	public String getAll() {
-		if(em.createQuery("SELECT * FROM Employee")==null) {
-			return "fucked up";
-		}else return "fucked up too";
+	public List<Employee> findAll() {
+		return em.createQuery("FROM Employee").getResultList();
 	}
 	
 	public Employee findFirstByLoginAndPassword(String login, String password) {

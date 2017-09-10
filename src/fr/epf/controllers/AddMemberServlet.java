@@ -1,6 +1,10 @@
 package fr.epf.controllers;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,6 +31,11 @@ public class AddMemberServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Employee employee = (Employee) request.getSession().getAttribute("employee");
+
+		if(employee == null){
+			response.sendRedirect("connection");
+		}
 		request.getRequestDispatcher("WEB-INF/add_member.jsp").forward(request, response);
 	}
 
@@ -39,16 +48,29 @@ public class AddMemberServlet extends HttpServlet {
 			employeeDao.save(employee);
 			request.setAttribute("error", "User added");
 		} else{
-			request.setAttribute("error", "Wrong login");
+			request.setAttribute("error", "Wrong data");
 		}
 
 		request.getRequestDispatcher("/WEB-INF/add_member.jsp").forward(request, response);
 	}
 	
-	private Employee parseEmployee(HttpServletRequest request) {
+	private Employee parseEmployee(HttpServletRequest request){
+		String name = request.getParameter("name");
+		String mail = request.getParameter("email");
+		String stringDate = request.getParameter("date");
+		System.out.println(stringDate);
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		return new Employee(null, null, null, login, password, 0);
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+		Date date = null;
+		try {
+		    date = df.parse(stringDate);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		if(request.getParameter("admin")!= null) {
+			return new Employee(name, mail, date, login, password, 1);
+		}else return new Employee(name, mail, date, login, password, 0);
 		
 	}
 

@@ -47,7 +47,16 @@ public class DashboardServlet extends HttpServlet {
 		MOTM motm3 = new MOTM();
 		MOTM motm4 = new MOTM();
 		
-		if(motmList.size()>=4){
+		if(motmList.size()==1){
+			motm1 = motmList.get(0);
+		}else if(motmList.size()==2){
+			motm1 = motmList.get(0);
+			motm2 = motmList.get(1);
+		}else if(motmList.size()==3){
+			motm1 = motmList.get(0);
+			motm2 = motmList.get(1);
+			motm3 = motmList.get(2);
+		}else if(motmList.size()>=4){
 			motm1 = motmList.get(0);
 			motm2 = motmList.get(1);
 			motm3 = motmList.get(2);
